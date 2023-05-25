@@ -1,4 +1,4 @@
-const useFetch = async (url, gql) => {
+export const useFetch = async (url, gql) => {
     const res = await fetch(
     url,
     {
@@ -17,7 +17,20 @@ const useFetch = async (url, gql) => {
 
 }
 
-export default useFetch; 
+
+
+
+export const fetchPokemon = async (url, id) => {
+  const res = await fetch(`${url}${id + 0}`)
+  if (res.status === 404) {
+    return
+  }
+
+  const data = await res.json()
+  
+
+  return data
+}
 
 // export async function getStaticPaths() {
 //     const slugsResponse = await fetch(
