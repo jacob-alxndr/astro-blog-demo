@@ -9,9 +9,10 @@ export default function HeroPost({
   excerpt,
   author,
   slug,
-  preview
+  preview,
 }) {
   const hrefLink = preview ? `/preview/posts/${slug}` : `/posts/${slug}`;
+
   return (
     <section>
       <div className="mb-8 md:mb-16">
@@ -19,6 +20,7 @@ export default function HeroPost({
           title={title}
           responsiveImage={coverImage.responsiveImage}
           slug={slug}
+          hrefLink={hrefLink}
         />
       </div>
       <div className="md:grid md:grid-cols-2 md:gap-x-16 lg:gap-x-8 mb-20 md:mb-28">

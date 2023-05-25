@@ -7,7 +7,7 @@ import MoreStories from "../components/more-stories";
 import getHome from "../operations/queries/getHome";
 import { useFetch, fetchPokemon } from "../lib/fetchData";
 
-const endpoint = "https://graphql.datocms.com/";
+const endpoint = import.meta.env.PUBLIC_DATO_GQL_ENDPOINT;
 const response = await useFetch(endpoint, getHome);
 const parsedResponse = await response.json();
 const posts = parsedResponse.data.allPosts;

@@ -10,8 +10,7 @@ import { useFetch } from "../../../lib/fetchData";
 import getPost from "../../../operations/queries/getPost";
 
 const { slug } = Astro.params;
-
-const endpoint = "https://graphql.datocms.com/preview";
+const endpoint = import.meta.env.PUBLIC_DATO_GQL_PREVIEW_ENDPOINT;
 const response = await useFetch(endpoint, { ...getPost, variables: { slug } });
 const parsedResponse = await response.json();
 const post = parsedResponse.data.post;
@@ -26,7 +25,6 @@ export async function getStaticPaths() {
   };
   const slugsResponse = await useFetch(endpoint, query);
   const parsedSlugResponse = await slugsResponse.json();
-
   const pathsArray = [];
   for (const slug of parsedSlugResponse.data.allPosts) {
     pathsArray.push({ params: slug });
