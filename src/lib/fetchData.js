@@ -20,17 +20,17 @@ export const useFetch = async (url, gql) => {
 
 
 
-export const fetchPokemon = async (url, id) => {
-  const res = await fetch(`${url}${id + 0}`)
-  if (res.status === 404) {
-    return
-  }
+// export const fetchPokemon = async (url, id) => {
+//   const res = await fetch(`${url}${id + 0}`)
+//   if (res.status === 404) {
+//     return
+//   }
 
-  const data = await res.json()
+//   const data = await res.json()
   
 
-  return data
-}
+//   return data
+// }
 
 // export async function getStaticPaths() {
 //     const slugsResponse = await fetch(

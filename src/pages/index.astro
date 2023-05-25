@@ -14,40 +14,40 @@ const posts = parsedResponse.data.allPosts;
 const heroPost = posts.shift();
 const morePosts = posts;
 
-const pokeEndpoint = "https://pokeapi.co/api/v2/pokemon/";
-const kanto = 151;
+// const pokeEndpoint = "https://pokeapi.co/api/v2/pokemon/";
+// const kanto = 151;
 
-const loadPokemon = async (num) => {
-  const pokemonPromises = [];
-  for (let i = 0; i < num; i++) {
-    const pokeRes = fetchPokemon(pokeEndpoint, i + 1);
-    pokemonPromises.push(pokeRes);
-  }
-  const pokemon = await Promise.all(pokemonPromises);
-  return pokemon;
-};
-const kantoGeneration = await loadPokemon(kanto);
+// const loadPokemon = async (num) => {
+//   const pokemonPromises = [];
+//   for (let i = 0; i < num; i++) {
+//     const pokeRes = fetchPokemon(pokeEndpoint, i + 1);
+//     pokemonPromises.push(pokeRes);
+//   }
+//   const pokemon = await Promise.all(pokemonPromises);
+//   return pokemon;
+// };
+// const kantoGeneration = await loadPokemon(kanto);
 
-console.log("kantoGeneration", kantoGeneration);
+// console.log("kantoGeneration", kantoGeneration);
 ---
 
+<!-- {
+  kantoGeneration.map((pokemon) => {
+    return (
+      pokemon?.name && (
+        <h1>
+          {" "}
+          {pokemon.id}
+          {pokemon.name}
+        </h1>
+      )
+    );
+  })
+} -->
 <>
   <Layout preview={false} currentSlug={""}>
     <Container>
       <Intro />
-      {
-        kantoGeneration.map((pokemon) => {
-          return (
-            pokemon?.name && (
-              <h1>
-                {" "}
-                {pokemon.id}
-                {pokemon.name}
-              </h1>
-            )
-          );
-        })
-      }
 
       <HeroPost
         preview={false}
