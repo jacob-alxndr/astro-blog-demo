@@ -5,7 +5,7 @@ import Intro from "../components/intro.astro";
 import Layout from "../components/layout";
 import MoreStories from "../components/more-stories";
 import getHome from "../operations/queries/getHome";
-import { useFetch, fetchPokemon } from "../lib/fetchData";
+import { useFetch } from "../lib/fetchData";
 
 const endpoint = import.meta.env.PUBLIC_DATO_GQL_ENDPOINT;
 const response = await useFetch(endpoint, getHome);
