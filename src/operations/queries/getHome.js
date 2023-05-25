@@ -1,4 +1,5 @@
-import { metaTagsFragment, responsiveImageFragment } from "../../lib/fragments"
+import { metaTagsFragment } from "../fragments/metaTagsFragment"
+import { responsiveImageFragment } from "../fragments/responsiveImageFragment"
 
 export default getHome = {
   query: `
