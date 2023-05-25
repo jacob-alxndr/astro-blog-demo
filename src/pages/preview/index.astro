@@ -4,26 +4,30 @@ import HeroPost from "../../components/hero-post";
 import Intro from "../../components/intro.astro";
 import Layout from "../../components/layout";
 import MoreStories from "../../components/more-stories";
-import useFetch from "../../lib/useFetch"
-import getHome from '../../operations/queries/getHome'
+import useFetch from "../../lib/useFetch";
+import getHome from "../../operations/queries/getHome";
 
-const endpoint = 'https://graphql.datocms.com/preview' 
-const response = await useFetch(endpoint, getHome)
-const parsedResponse = await response.json()
-
-const posts = parsedResponse.data.allPosts
-
-const heroPost = posts.shift()
-const morePosts = posts
-
+const endpoint = "https://graphql.datocms.com/preview";
+const response = await useFetch(endpoint, getHome);
+const parsedResponse = await response.json();
+const posts = parsedResponse.data.allPosts;
+const heroPost = posts.shift();
+const morePosts = posts;
 ---
 
 <>
   <Layout preview={true} currentSlug={"/"}>
     <Container>
       <Intro />
-      <HeroPost preview={true} title={heroPost.title} coverImage={heroPost.coverImage} date={heroPost.date} author={heroPost.author}
-        slug={heroPost.slug} excerpt={heroPost.excerpt} />
+      <HeroPost
+        preview={true}
+        title={heroPost.title}
+        coverImage={heroPost.coverImage}
+        date={heroPost.date}
+        author={heroPost.author}
+        slug={heroPost.slug}
+        excerpt={heroPost.excerpt}
+      />
       <MoreStories preview={true} posts={morePosts} />
     </Container>
   </Layout>

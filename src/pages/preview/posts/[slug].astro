@@ -5,30 +5,35 @@ import MoreStories from "../../../components/more-stories";
 import PostHeader from "../../../components/post-header";
 import PostBody from "../../../components/post-body";
 import SectionSeparator from "../../../components/section-separator";
-import { metaTagsFragment, responsiveImageFragment } from "../../../lib/fragments";
+import {
+  metaTagsFragment,
+  responsiveImageFragment,
+} from "../../../lib/fragments";
 import Layout from "../../../components/layout";
-import useFetch from "../../../lib/useFetch"
-import getPost from '../../../operations/queries/getPost'
+import useFetch from "../../../lib/useFetch";
+import getPost from "../../../operations/queries/getPost";
 
-const { slug } = Astro.params
+const { slug } = Astro.params;
 
-const endpoint = 'https://graphql.datocms.com/preview' 
-const response = await useFetch(endpoint, {...getPost, variables: {slug}})
-const parsedResponse = await response.json()
-const post = parsedResponse.data.post
-const morePosts = parsedResponse.data.morePosts
+const endpoint = "https://graphql.datocms.com/preview";
+const response = await useFetch(endpoint, { ...getPost, variables: { slug } });
+const parsedResponse = await response.json();
+const post = parsedResponse.data.post;
+const morePosts = parsedResponse.data.morePosts;
 
 export async function getStaticPaths() {
-  const endpoint = 'https://graphql.datocms.com/preview'
-  const query =  {query: `{allPosts {
+  const endpoint = "https://graphql.datocms.com/preview";
+  const query = {
+    query: `{allPosts {
   slug
-}}`}
-  const slugsResponse = await useFetch(endpoint, query)
-  const parsedSlugResponse = await slugsResponse.json()
-  
-  const pathsArray = []
-  for(const slug of parsedSlugResponse.data.allPosts){
-    pathsArray.push({params: slug})
+}}`,
+  };
+  const slugsResponse = await useFetch(endpoint, query);
+  const parsedSlugResponse = await slugsResponse.json();
+
+  const pathsArray = [];
+  for (const slug of parsedSlugResponse.data.allPosts) {
+    pathsArray.push({ params: slug });
   }
   return pathsArray;
 }
